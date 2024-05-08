@@ -5,10 +5,10 @@ type Card struct {
 	rank string
 }
 
-func (c *Card) GetSuit() string {
+func (c *Card) Suit() string {
 	return c.suit
 }
 
-func (c *Card) GetRank() string {
+func (c *Card) Rank() string {
 	return c.rank
 }

@@ -9,32 +9,32 @@ import (
 func TestInitializeDeck(t *testing.T) {
 	deck := regicidego.Deck{}
 
-	deck.InitializeDeck()
+	deck.NewDeck()
 
 	expectedTavernLength := 40
 
-	if len(deck.GetTavern()) != expectedTavernLength {
-		t.Errorf("Expected tavern deck length %d, but got %d", expectedTavernLength, len(deck.GetTavern()))
+	if len(deck.Tavern()) != expectedTavernLength {
+		t.Errorf("Expected tavern deck length %d, but got %d", expectedTavernLength, len(deck.Tavern()))
 	}
 
 	expectedCastleLength := 12
 
-	if len(deck.GetCastle()) != expectedCastleLength {
-		t.Errorf("Expected castle deck length %d, but got %d", expectedCastleLength, len(deck.GetCastle()))
+	if len(deck.Castle()) != expectedCastleLength {
+		t.Errorf("Expected castle deck length %d, but got %d", expectedCastleLength, len(deck.Castle()))
 	}
 
-	for i, card := range deck.GetCastle() {
+	for i, card := range deck.Castle() {
 		if i < 4 {
-			if card.GetRank() != "J" {
-				t.Errorf("Expected correct J castle group, but got %s", card.GetRank())
+			if card.Rank() != "J" {
+				t.Errorf("Expected correct J castle group, but got %s", card.Rank())
 			}
 		} else if i < 8 {
-			if card.GetRank() != "Q" {
-				t.Errorf("Expected correct Q castle group, but got %s", card.GetRank())
+			if card.Rank() != "Q" {
+				t.Errorf("Expected correct Q castle group, but got %s", card.Rank())
 			}
 		} else if i < 12 {
-			if card.GetRank() != "K" {
-				t.Errorf("Expected correct K castle group, but got %s", card.GetRank())
+			if card.Rank() != "K" {
+				t.Errorf("Expected correct K castle group, but got %s", card.Rank())
 			}
 		}
 	}
