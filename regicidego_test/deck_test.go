@@ -25,16 +25,16 @@ func TestInitializeDeck(t *testing.T) {
 
 	for i, card := range deck.Castle() {
 		if i < 4 {
-			if card.Rank() != "J" {
-				t.Errorf("Expected correct J castle group, but got %s", card.Rank())
+			if card.Rank != "J" {
+				t.Errorf("Expected correct J castle group, but got %s", card.Rank)
 			}
 		} else if i < 8 {
-			if card.Rank() != "Q" {
-				t.Errorf("Expected correct Q castle group, but got %s", card.Rank())
+			if card.Rank != "Q" {
+				t.Errorf("Expected correct Q castle group, but got %s", card.Rank)
 			}
 		} else if i < 12 {
-			if card.Rank() != "K" {
-				t.Errorf("Expected correct K castle group, but got %s", card.Rank())
+			if card.Rank != "K" {
+				t.Errorf("Expected correct K castle group, but got %s", card.Rank)
 			}
 		}
 	}

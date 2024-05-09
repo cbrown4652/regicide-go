@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/cbrown4652/regicide-go/regicidego"
@@ -11,13 +12,30 @@ func RenderGameState(gs regicidego.GameState) string {
 
 	sb.WriteString("\nRegicide \n\n")
 
-	sb.WriteString("Castle:\n")
+	sb.WriteString("Enemy:\n")
 
-	for _, card := range gs.Deck.Castle() {
-		sb.WriteString("Suit: " + card.Suit() + ", Rank: " + card.Rank() + "\n")
+	sb.WriteString(gs.Enemy.Card.Rank + " " + gs.Enemy.Card.Suit + "\n")
+	sb.WriteString("Health: " + strconv.Itoa(gs.Enemy.Health) + "\n")
+	sb.WriteString("Attack: " + strconv.Itoa(gs.Enemy.Attack) + "\n\n\n")
+
+	sb.WriteString("Hand:\n")
+
+	for _, card := range gs.PlayerHand.Cards {
+		sb.WriteString(card.Rank + " " + card.Suit)
+		if card.Selected {
+			sb.WriteString(" *\n")
+		} else {
+			sb.WriteString(" \n")
+		}
 	}
 
-	sb.WriteString("Tavern:\n")
+	// sb.WriteString("Castle:\n")
+
+	// for _, card := range gs.Deck.Castle() {
+	// 	sb.WriteString("Suit: " + card.Suit() + ", Rank: " + card.Rank() + "\n")
+	// }
+
+	// sb.WriteString("Tavern:\n")
 
 	// sb.WriteString("Length: " + strconv.Itoa(len(gs.Deck.Tavern())) + "\n")
 
@@ -26,18 +44,6 @@ func RenderGameState(gs regicidego.GameState) string {
 	// 		sb.WriteString("Suit: " + card.Suit() + ", Rank: " + card.Rank() + "\n")
 	// 	}
 	// }
-
-	sb.WriteString("Hand:\n")
-
-	for _, card := range gs.PlayerHand.Cards {
-		sb.WriteString("Suit: " + card.Suit() + ", Rank: " + card.Rank() + "\n")
-	}
-
-	sb.WriteString("Enemy:\n")
-
-	sb.WriteString(gs.Enemy.Card.Rank() + " " + gs.Enemy.Card.Suit() + "\n")
-
-	sb.WriteString("Tavern after dealing hand:\n")
 
 	// sb.WriteString("Length: " + strconv.Itoa(len(gs.Deck.Tavern())) + "\n")
 

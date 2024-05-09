@@ -35,7 +35,7 @@ func newTavern() []Card {
 
 	for _, suit := range suits {
 		for _, rank := range ranks {
-			tavern = append(tavern, Card{suit, rank})
+			tavern = append(tavern, Card{Suit: suit, Rank: rank})
 		}
 	}
 
@@ -52,7 +52,7 @@ func newCastle() []Card {
 	for _, rank := range ranks {
 		var rank_group []Card
 		for _, suit := range suits {
-			rank_group = append(rank_group, Card{suit, rank})
+			rank_group = append(rank_group, Card{Suit: suit, Rank: rank})
 		}
 		rank_group = shuffleCards(rank_group)
 		castle = append(castle, rank_group...)
@@ -77,11 +77,11 @@ func (d *Deck) DealPlayerHand() Hand {
 	return hand
 }
 
-func (d *Deck) dealNextTavernCard() Card {
-	var nextCard Card
+func (d *Deck) dealNextTavernCard() *Card {
+	var nextCard *Card
 
 	if len(d.tavern) > 0 {
-		nextCard = d.tavern[len(d.tavern)-1]
+		nextCard = &d.tavern[len(d.tavern)-1]
 		d.tavern = d.tavern[:len(d.tavern)-1]
 	}
 

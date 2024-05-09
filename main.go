@@ -37,6 +37,24 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		case "q", "ctrl+c":
 			return m, tea.Quit
+		case "1":
+			m.gameState.PlayerHand.Cards[0].Selected = true
+		case "2":
+			m.gameState.PlayerHand.Cards[1].Selected = true
+		case "3":
+			m.gameState.PlayerHand.Cards[2].Selected = true
+		case "4":
+			m.gameState.PlayerHand.Cards[3].Selected = true
+		case "5":
+			m.gameState.PlayerHand.Cards[4].Selected = true
+		case "6":
+			m.gameState.PlayerHand.Cards[5].Selected = true
+		case "7":
+			m.gameState.PlayerHand.Cards[6].Selected = true
+		case "8":
+			m.gameState.PlayerHand.Cards[7].Selected = true
+		case "enter":
+			m.gameState.PlayerPlaysCards(m.gameState.PlayerHand.Cards)
 		}
 	}
 

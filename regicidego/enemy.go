@@ -10,7 +10,7 @@ func NewEnemy(c Card) Enemy {
 	var health int
 	var attack int
 
-	switch c.rank {
+	switch c.Rank {
 	case "J":
 		health = 20
 		attack = 10
