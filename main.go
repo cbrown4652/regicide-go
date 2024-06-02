@@ -4,20 +4,20 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cbrown4652/regicide-go/regicidego"
+	"github.com/cbrown4652/regicide-go/game"
 	"github.com/cbrown4652/regicide-go/ui"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
 
 type model struct {
-	gameState regicidego.GameState
+	gameState game.GameState
 }
 
 func initialModel() model {
-	gs := regicidego.GameState{
-		Deck:       regicidego.Deck{},
-		PlayerHand: regicidego.Hand{},
+	gs := game.GameState{
+		Deck:       game.Deck{},
+		PlayerHand: game.Hand{},
 	}
 	gs.Deck.NewDeck()
 	gs.PlayerHand = gs.Deck.DealPlayerHand()
@@ -38,21 +38,21 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "q", "ctrl+c":
 			return m, tea.Quit
 		case "1":
-			m.gameState.PlayerHand.Cards[0].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(0)
 		case "2":
-			m.gameState.PlayerHand.Cards[1].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(1)
 		case "3":
-			m.gameState.PlayerHand.Cards[2].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(2)
 		case "4":
-			m.gameState.PlayerHand.Cards[3].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(3)
 		case "5":
-			m.gameState.PlayerHand.Cards[4].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(4)
 		case "6":
-			m.gameState.PlayerHand.Cards[5].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(5)
 		case "7":
-			m.gameState.PlayerHand.Cards[6].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(6)
 		case "8":
-			m.gameState.PlayerHand.Cards[7].Selected = true
+			m.gameState.PlayerHand.ToggleCardSelection(7)
 		case "enter":
 			m.gameState.PlayerPlaysCards(m.gameState.PlayerHand.Cards)
 		}

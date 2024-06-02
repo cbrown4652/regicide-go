@@ -4,10 +4,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/cbrown4652/regicide-go/regicidego"
+	"github.com/cbrown4652/regicide-go/game"
 )
 
-func RenderGameState(gs regicidego.GameState) string {
+func RenderGameState(gs game.GameState) string {
 	var sb strings.Builder
 
 	sb.WriteString("\nRegicide \n\n")
